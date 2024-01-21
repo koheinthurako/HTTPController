@@ -23,4 +23,16 @@ public class Movie_Service_Impl implements Movie_Service{
 		return movieCollection;
 	}
 
+
+	@Override
+	public Movie addNewMovie(Movie movie) {
+		Movie newMovie = new Movie();
+		newMovie.setId(movieCollection.size()+1);
+		newMovie.setName(movie.getName());
+		newMovie.setLanguage(movie.getLanguage());
+		newMovie.setType(movie.getType());
+		movieCollection.add(newMovie);
+		return newMovie;
+	}
+
 }

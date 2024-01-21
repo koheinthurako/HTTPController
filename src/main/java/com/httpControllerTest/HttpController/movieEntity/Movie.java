@@ -6,6 +6,8 @@ public class Movie {
 	private String name;
 	private String language;
 	private String type;
+	
+	public Movie() {};
 
 	public Movie(String name, String language, String type) {
 		super();

@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.httpControllerTest.HttpController.movieEntity.Movie;
@@ -16,6 +19,8 @@ public class Movie_Controller {
 	
 	@Autowired
 	Movie_Service_Impl movieService;
+	
+//	Server to => Client
 
 	@GetMapping("")
 	public String welcome() {
@@ -46,6 +51,34 @@ public class Movie_Controller {
 	@GetMapping("/movies/adventure")
 	public String sentAdventure() {
 		return "Welcome to Adventure Movie Collection";
+	}
+	
+	
+//	Client to => Server
+	
+	@PostMapping("/movies/msgAll/{all}")
+	public void all(@PathVariable("all") String msg) {
+		System.out.println("Received Message : " + "show " + msg + " movies");
+	}
+	
+	@PostMapping("/movies/msgDra/{drama}")
+	public void drama(@PathVariable("drama") String msg) {
+		System.out.println("Received Message : " + "show " + msg + " movies");
+	}
+	
+	@PostMapping("/movies/msgRo/{romance}")
+	public void romance(@PathVariable("romance") String msg) {
+		System.out.println("Received Message : " + "show " + msg + " movies");
+	}
+//	
+	@PostMapping("/movies/msgAdv/{adventure}")
+	public void adventure(@PathVariable("adventure") String msg) {
+		System.out.println("Received Message : " + "show " + msg + " movies");
+	}
+	
+	@PostMapping("/movies/add")
+	public ResponseEntity<Movie> addNew(@RequestBody Movie mov) {
+		return new ResponseEntity<Movie>(movieService.addNewMovie(mov), HttpStatus.CREATED);
 	}
 	
 	
