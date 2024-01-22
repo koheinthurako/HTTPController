@@ -35,4 +35,17 @@ public class Movie_Service_Impl implements Movie_Service{
 		return newMovie;
 	}
 
+
+	@Override
+	public Movie updateInfo(int id, Movie movie) {
+		for(Movie newMov : movieCollection) {
+			if(id == newMov.getId()) {
+				newMov.setName(movie.getName());
+				newMov.setLanguage(movie.getLanguage());
+				newMov.setType(movie.getType());
+			}
+		}
+		return movieCollection.get(id-1);
+	}
+
 }

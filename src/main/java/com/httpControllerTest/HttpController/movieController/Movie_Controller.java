@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -80,6 +81,15 @@ public class Movie_Controller {
 	public ResponseEntity<Movie> addNew(@RequestBody Movie mov) {
 		return new ResponseEntity<Movie>(movieService.addNewMovie(mov), HttpStatus.CREATED);
 	}
+	
+	
+	@PutMapping("/movies/update/{id}")
+	public ResponseEntity<Movie> updateInfo(@PathVariable int id, @RequestBody Movie movie) {
+		return new ResponseEntity<Movie>(movieService.updateInfo(id, movie), HttpStatus.OK);
+	}
+	
+	
+	
 	
 	
 }
