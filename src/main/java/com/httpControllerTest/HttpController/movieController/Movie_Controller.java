@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,9 +84,16 @@ public class Movie_Controller {
 	}
 	
 	
+	// Use @PutMapping to update data
 	@PutMapping("/movies/update/{id}")
 	public ResponseEntity<Movie> updateInfo(@PathVariable int id, @RequestBody Movie movie) {
 		return new ResponseEntity<Movie>(movieService.updateInfo(id, movie), HttpStatus.OK);
+	}
+	
+	
+	@DeleteMapping("movies/delete/{id}")
+	public String deleteMovie(@PathVariable int id) {
+		return movieService.deleteMovie(id);
 	}
 	
 	
