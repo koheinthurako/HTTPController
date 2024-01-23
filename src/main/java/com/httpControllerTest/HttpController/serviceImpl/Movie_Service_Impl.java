@@ -46,19 +46,19 @@ public class Movie_Service_Impl implements Movie_Service {
 		return movieCollection.get(id - 1);
 	}
 
+	
 	@Override
 	public String deleteMovie(int id) {
 		Iterator<Movie> movieList = movieCollection.iterator();
-		while (movieList.hasNext()) {
+		while(movieList.hasNext()) {
 			Movie pointer = movieList.next();
-			if (pointer.getId() == id) {
+			if(pointer.getId()==id) {
 				movieList.remove();
-				if (movieList.hasNext()) {
+				while(movieList.hasNext()) {
 					Movie newPointer = movieList.next();
-					newPointer.setId(movieCollection.size());
+					newPointer.setId(newPointer.getId()-1);
 				}
 			}
-
 		}
 		return "Deleted!";
 	}
