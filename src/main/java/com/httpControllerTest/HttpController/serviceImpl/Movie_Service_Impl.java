@@ -54,6 +54,7 @@ public class Movie_Service_Impl implements Movie_Service {
 			Movie pointer = movieList.next();
 			if(pointer.getId()==id) {
 				movieList.remove();
+//				loop inner to change other movies' id
 				while(movieList.hasNext()) {
 					Movie newPointer = movieList.next();
 					newPointer.setId(newPointer.getId()-1);
