@@ -17,6 +17,16 @@ public class Movie_Service_Impl implements Movie_Service {
 	public Movie_Service_Impl() {
 		movieCollection.add(new Movie(1, "Interstellar", "English", "Adventure"));
 	}
+	
+	@Override
+	public Movie getById(int id) {
+		for(Movie movie : movieCollection) {
+			if(movie.getId()==id) {
+				return movie;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public List<Movie> getAllMovies() {

@@ -55,6 +55,11 @@ public class Movie_Controller {
 		return "Welcome to Adventure Movie Collection";
 	}
 	
+	@GetMapping("/movies/{id}")
+	public ResponseEntity<Movie> getById(@PathVariable int id) {
+		return new ResponseEntity<Movie>(movieService.getById(id), HttpStatus.OK);
+	}
+	
 	
 //	Client to => Server
 	
