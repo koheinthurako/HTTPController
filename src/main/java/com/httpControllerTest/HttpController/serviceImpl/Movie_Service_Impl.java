@@ -27,6 +27,16 @@ public class Movie_Service_Impl implements Movie_Service {
 		}
 		return null;
 	}
+	
+	@Override
+	public Movie getByName(String name) {
+		for(Movie movie : movieCollection ) {
+			if(movie.getName().toLowerCase().equals(name.toLowerCase())) {
+				return movie;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public List<Movie> getAllMovies() {

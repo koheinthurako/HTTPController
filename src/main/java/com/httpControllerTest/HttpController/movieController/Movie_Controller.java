@@ -61,6 +61,7 @@ public class Movie_Controller {
 	}
 	
 	
+	
 //	Client to => Server
 	
 	@PostMapping("/movies/msgAll/{all}")
@@ -86,6 +87,11 @@ public class Movie_Controller {
 	@PostMapping("/movies/add")
 	public ResponseEntity<Movie> addNew(@RequestBody Movie mov) {
 		return new ResponseEntity<Movie>(movieService.addNewMovie(mov), HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/movies/{name}")
+	public ResponseEntity<Movie> getByName(@PathVariable String name) {
+		return new ResponseEntity<Movie>(movieService.getByName(name), HttpStatus.OK);
 	}
 	
 	

@@ -8,6 +8,7 @@ public interface Movie_Service {
 
 	public List<Movie> getAllMovies();
 	public Movie getById(int id);
+	public Movie getByName(String name);
 	public Movie addNewMovie(Movie movie);
 	public Movie updateInfo(int id, Movie movie);
 	public String deleteMovie(int id);
